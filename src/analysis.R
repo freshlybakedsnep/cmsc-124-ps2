@@ -145,5 +145,24 @@ build_roster <- function(student_names, groups, scores) {
 # split() can divide adjusted_score by every factor level. vapply() can then
 # compute one mean for each part and return a named vector with no dimensions.
 summarize_roster <- function(roster) {
-    stop("TODO: implement summarize_roster()")
+    rows                    <- nrow(roster)                 # extract the number of rows
+    missing_raw             <- sum(is.na(roster$raw_score)) # count the NAs in raw_score
+    mean_adjusted           <- mean(roster$adjusted_score)  # compute the mean of adjusted_score
+    passed                  <- roster$name[roster$passed]   # extract names of students who passed
+    mean_by_group           <- vapply(                      # compute mean adjusted_score by group
+                                    split(roster$adjusted_score, roster$group), # split adjusted_score by group
+                                    mean,                   # compute the mean for each group
+                                    numeric(1)              # specify that the output is a numeric vector of length 1
+                                )
+    names(mean_by_group)    <- levels(roster$group)         # assign the group levels as names to the mean_by_group vector
+    
+    # Return the results as a list with the specified structure
+    out <- list(
+        rows = rows,
+        missing_raw = missing_raw,
+        mean_adjusted = mean_adjusted,
+        passed = passed,
+        mean_by_group = mean_by_group
+    )
+    return(out)
 }
