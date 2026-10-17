@@ -58,7 +58,20 @@ clean_scores_vector <- function(scores) {
 # names attached. Accumulating into a fresh vector with out <- c(out, value)
 # drops them, and the check compares with identical(), which notices.
 clean_scores_scalar <- function(scores) {
-    stop("TODO: implement clean_scores_scalar()")
+    # copy into local double vector with names preserved
+    out <- setNames(as.double(scores), names(scores))
+
+    # iterate over each element of scores
+    for (i in seq_along(scores)) {
+        # apply the same logic as in clean_scores_vector() for each element
+        # replace NA values with 0
+        if (is.na(scores[i])) out[i] <- 0
+        # otherwise, multiply by 2 and cap at 20
+        else out[i] <- scores[i] * 2
+        # cap the value at 20
+        if (out[i] > 20) out[i] <- 20
+    }
+    return(out)
 }
 
 # build_roster(student_names, groups, scores)
