@@ -46,7 +46,7 @@ na.rm = TRUE evaluates the input vector by dropping values whose values are NA. 
 Initializes an integer vector `x` with three elements [1,2,3], then updates the 2nd element with 2.5 which triggers type coercion that widens `x` into a double vector.
 
 ## P14
-Initializes an integer vector `scores` with four elements [7, NA_real_, 12, 4], which is fed into ifelse(is.na(scores), 0, scores*2) to make one choice per position and produces [14, 0, 24, 8] as an integer vector to `adjusted`. `adjusted` is then evaluated with a logical index that replaces elements whose value > 15 to 15. Hence, `adjusted` is produced as a length four integer vector [14,0,15,8].  
+Initializes an integer vector `scores` with four elements [7, NA_real_, 12, 4], which is fed into ifelse(is.na(scores), 0, scores*2) to make one choice per position and produces [14, 0, 24, 8] as an integer vector to `adjusted`. `adjusted` is then evaluated with a logical index that replaces elements whose value > 15 to 15. Hence, `adjusted` is produced as a length four integer vector [14,0,15,8]. Correction: we predicted it to be integer but NA is a double and the other values doesn't have an L which indicates also being a double
 
 ## P15
 Array declaration that with dimension set to 2x2x2 with elements set from 1 to 8.
