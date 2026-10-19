@@ -28,8 +28,7 @@ Logical index vector. | computes the logical at every position, where values cor
 Factor declaration which is built on top of integers, with two attributes: a class, “factor”, which makes it behave differently from regular integer vectors, and levels, which defines the set of allowed values. Type is integer because it is an integer vector, has no dim.
 
 ## P08
-List declaration with elements being of any type, which is just a reference to another object of any type - hence its type remains as list. Length is 2 because it has two elements: scores and label. Dim is none because lists are almost always 1D.
-Correction: lists have no dim attributes.
+List declaration with elements being of any type, which is just a reference to another object of any type - hence its type remains as list. Length is 2 because it has two elements: scores and label. Dim is none because lists have no dim attribute.
 
 ## P09
 Data frame declaration. It is simply a list with a class attribute, hence typeof() returns a list. Length is the number of columns, dim is always 2 (columns and rows). 
